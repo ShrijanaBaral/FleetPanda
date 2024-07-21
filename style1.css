@@ -1,0 +1,180 @@
+/* Reset default margin, padding, and box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color:transparent;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://plus.unsplash.com/premium_photo-1677194562330-2210f33e2576?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.navbar .navbar-brand img {
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.navbar .nav-links {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-links li {
+    margin-left: 20px;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    color: #66b3ff;
+}
+
+/* Main container styles */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: transparent;
+    
+}
+
+.container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="password"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #66b3ff;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group label,
+.form-group input,
+.form-group textarea {
+    display: block;
+}
+
+.form-group button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-group button[type="submit"]:hover {
+    background-color: #66b3ff;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Alert box styles */
+#alertBox {
+    margin-bottom: 20px;
+    padding: 10px;
+    color: #721c24;
+    border-radius: 4px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar .nav-links {
+        margin-top: 10px;
+    }
+
+    .navbar .nav-links li {
+        margin-left: 0;
+    }
+
+    .navbar .nav-links a {
+        margin-left: 0;
+    }
+
+    .navbar .navbar-brand img {
+        margin-bottom: 10px;
+    }
