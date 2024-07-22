@@ -53,3 +53,41 @@ function clearAlert() {
     var alertBox = document.getElementById('alertBox');
     alertBox.innerHTML = '';
 }
+document.getElementById('signUpForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const signUpData = {
+        username: username,
+        email: email,
+        password: password
+    };
+
+    fetch('https://api.example.com/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(signUpData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Handle successful sign-up (e.g., redirect to login page)
+            window.location.href = 'index.html';
+        } else {
+            // Display error message
+            document.getElementById('alertBox').innerText = data.message;
+            document.getElementById('alertBox').classList.add('error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('alertBox').innerText = 'An error occurred.';
+        document.getElementById('alertBox').classList.add('error');
+    });
+});
+
