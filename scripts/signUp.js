@@ -1,93 +1,111 @@
-document.getElementById('feedbackForm').addEventListener('submit', function(event) {
-    event.preventDefault(); 
+/** @format */
+
+document
+  .getElementById("feedbackForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
     clearAlert();
-    var username = document.getElementById('username').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var contactNo = document.getElementById('contactNo').value.trim();
-    var password = document.getElementById('password').value.trim();
-    var feedback = document.getElementById('feedback').value.trim();
+    var username = document.getElementById("username").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var contactNo = document.getElementById("contactNo").value.trim();
+    var password = document.getElementById("password").value.trim();
+    var feedback = document.getElementById("feedback").value.trim();
 
-    if (username === '') {
-        displayAlert('Please enter your username');
-        return;
+    if (username === "") {
+      displayAlert("Please enter your username");
+      return;
     }
 
-    if (email === '' || !isValidEmail(email)) {
-        displayAlert('Please enter a valid email address');
-        return;
+    if (email === "" || !isValidEmail(email)) {
+      displayAlert("Please enter a valid email address");
+      return;
     }
 
-    if (contactNo === '') {
-        displayAlert('Please enter your contact number');
-        return;
+    if (contactNo === "") {
+      displayAlert("Please enter your contact number");
+      return;
     }
 
-    if (password === '') {
-        displayAlert('Please enter your password');
-        return;
+    if (password === "") {
+      displayAlert("Please enter your password");
+      return;
     }
 
-    if (feedback === '') {
-        displayAlert('Please provide your feedback');
-        return;
+    if (feedback === "") {
+      displayAlert("Please provide your feedback");
+      return;
     }
-    alert('Logged In Successfully');
-    document.getElementById('feedbackForm').reset();
-});
+    alert("Logged In Successfully");
+    document.getElementById("feedbackForm").reset();
+  });
 
 function isValidEmail(email) {
- 
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
 }
 
 function displayAlert(message) {
-    var alertBox = document.getElementById('alertBox');
-    var alertMsg = document.createElement('div');
-    alertMsg.classList.add('alert');
-    alertMsg.textContent = message;
-    alertBox.appendChild(alertMsg);
+  var alertBox = document.getElementById("alertBox");
+  var alertMsg = document.createElement("div");
+  alertMsg.classList.add("alert");
+  alertMsg.textContent = message;
+  alertBox.appendChild(alertMsg);
 }
 
 function clearAlert() {
-    var alertBox = document.getElementById('alertBox');
-    alertBox.innerHTML = '';
+  var alertBox = document.getElementById("alertBox");
+  alertBox.innerHTML = "";
 }
-document.getElementById('signUpForm').addEventListener('submit', function(event) {
+document
+  .getElementById("signUpForm")
+  .addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent the default form submission
 
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
     const signUpData = {
-        username: username,
-        email: email,
-        password: password
+      username: username,
+      email: email,
+      password: password,
     };
 
-    fetch('https://api.example.com/signup', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(signUpData)
+    fetch("https://reqres.in/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginData),
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Handle successful sign-up (e.g., redirect to login page)
-            window.location.href = 'index.html';
+      .then((res) => {
+        if (res.ok) {
+          alert("Login Successful");
         } else {
-            // Display error message
-            document.getElementById('alertBox').innerText = data.message;
-            document.getElementById('alertBox').classList.add('error');
+          alert("Login Invalid");
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('alertBox').innerText = 'An error occurred.';
-        document.getElementById('alertBox').classList.add('error');
-    });
-});
-
+        return res.json();
+      })
+      .then((data) => {
+        localStorage.setItem("loginData", JSON.stringify(data));
+        console.log(localStorage.getItem("loginData"));
+      })
+      .catch((error) => alert("Error"));
+    fetch("https://reqres.in/api/users", { method: "POST", body: signUpData })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          // Handle successful sign-up (e.g., redirect to login page)
+          window.location.href = "index.html";
+        } else {
+          // Display error message
+          document.getElementById("alertBox").innerText = data.message;
+          document.getElementById("alertBox").classList.add("error");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        document.getElementById("alertBox").innerText = "An error occurred.";
+        document.getElementById("alertBox").classList.add("error");
+      });
+  });
