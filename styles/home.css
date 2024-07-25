@@ -1,15 +1,8 @@
-/**
- * Reset default margin, padding, and box-sizing
- *
- * @format
- */
 
 * {
   margin: 0;
   padding: 0;
 }
-
-/* Body styles */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: transparent;
@@ -34,8 +27,8 @@ body {
 }
 
 .navbar-brand img {
-  height: 40px; /* Adjust as needed */
-  border-radius: 50%; /* Ensures the logo appears round */
+  height: 40px; 
+  border-radius: 50%; 
 }
 
 .navbar-links {
@@ -54,7 +47,6 @@ body {
 .navbar-links a:hover {
   color: #66b3ff;
 }
-/* Main content styles */
 .container {
   max-width: 100%;
   margin: 20px auto;
@@ -90,7 +82,6 @@ body {
   line-height: 1.8;
 }
 
-/* Section styles */
 .section {
   background-color: #f9f9f9;
   padding: 30px;
@@ -112,7 +103,6 @@ body {
   text-align: center;
 }
 
-/* Useful links and Login section */
 .useful-login-container {
   display: flex;
   justify-content: space-between;

@@ -1,7 +1,6 @@
-/** @format */
+import { request } from './request.js';
 document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("loginForm");
-  const alertBox = document.getElementById("alertBox");
 
   if (loginForm) {
     loginForm.addEventListener("submit", function (event) {
@@ -15,29 +14,21 @@ document.addEventListener("DOMContentLoaded", function () {
         password: password,
       };
 
-      fetch("https://reqres.in/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginData),
-      })
-        .then((response) => response.json())
-        .then((data) => {
+      request('POST', 'https://reqres.in/api/login', loginData)
+        .then(data => {
           if (data.token) {
             alert("Login Successful");
             localStorage.setItem("isLoggedIn", "true");
-            console.log(localStorage.getItem("loginData"));
-            window.location.href = "../App/home.html";
+            localStorage.setItem("username", username);
+            console.log(loginData);
+            window.location.href = 'home.html';
           } else {
-            alertBox.innerHTML =
-              "<p>Invalid username or password. Please try again.</p>";
+            alertBox.innerHTML = "<p>Invalid username or password. Please try again.</p>";
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.error("Error:", error);
-          alertBox.innerHTML =
-            "<p>An error occurred. Please try again later.</p>";
+          alertBox.innerHTML = "<p>An error occurred. Please try again later.</p>";
         });
     });
   } else {

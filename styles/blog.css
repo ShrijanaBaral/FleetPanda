@@ -136,10 +136,32 @@ footer {
 
   p {
     font-size: 1em;
+  
   }
+}
+.container img{
+  width:50%;
+}
+.middle {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  justify-content: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  margin: 20px auto;
+  width: 80%; 
+}
 
-  .middle,
-  .last {
-    padding: 1em;
-  }
+
+.middle h1 {
+  font-size: 2em;
+  margin: 10px 0;
+}
+
+.middle p {
+  font-size: 1em;
+  margin: 5px 0;
+  text-align: center;
 }
